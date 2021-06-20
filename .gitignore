@@ -1,0 +1,2 @@
+build/*
+build/.cmake/api/v1/query/client-vscode/query.json

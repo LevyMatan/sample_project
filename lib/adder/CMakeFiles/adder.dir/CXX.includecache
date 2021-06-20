@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/matanlevy/learning/github-actions-learn/adder/adder.cpp
+adder.h
+/Users/matanlevy/learning/github-actions-learn/adder/adder.h
+
+/Users/matanlevy/learning/github-actions-learn/adder/adder.h
+
