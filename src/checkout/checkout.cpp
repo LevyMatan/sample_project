@@ -26,11 +26,10 @@ void Checkout::addItem(std::string item_name)
 
 void Checkout::addDiscount(std::string item_name, int number_of_items, int discount_price)
 {
-    Discount discount = 
-    {
-        .discount_price = discount_price,
-        .num_of_items = number_of_items,
-    };
+    Discount discount; 
+    discount.discount_price = discount_price;
+    discount.num_of_items = number_of_items;
+
     
     discounts[item_name] = discount;
     
