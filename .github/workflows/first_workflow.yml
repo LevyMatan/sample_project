@@ -50,7 +50,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run cmake
-        run: cmake -S . -B ./build
+        run: cmake -S . -B ./build -DCMAKE_BUILD_TYPE=Debug
 
       # Runs a set of commands using the runners shell
       - name: Run make
@@ -62,4 +62,4 @@ jobs:
       - name: Run Tests
         run: |
           ./build/test/SampleProject_test
-          ./build/src/SampleProject_run
+          ./build/src/SampleProject
