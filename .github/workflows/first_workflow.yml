@@ -47,3 +47,10 @@ jobs:
       - name: Run cmake
         run: |
           cmake -S . -B ./build
+          cd build
+          make 
+
+      # Runs a set of commands using the runners shell
+      - name: Run Tests
+        run: |
+          ./test/SampleProject_test
