@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "get_rx_tx_mask.h"
+#include <bitset>
 
 TEST( GetRxTxMask, SampleTestCase) {
   
