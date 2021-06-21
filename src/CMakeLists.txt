@@ -1,42 +1,58 @@
-# set(BINARY ${CMAKE_PROJECT_NAME})
+cmake_minimum_required(VERSION 3.5)
+project(SampleProject LANGUAGES C CXX)
 
-# file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp *.c)
+set(SAMPLE_PROJECT_SOURCES
+	main.cpp)
 
-# set(SOURCES ${SOURCES})
+	
+if("${CMAKE_BUILD_TYPE}" STREQUAL "")
+	set(CMAKE_BUILD_TYPE 
+		Release 
+		CACHE 
+		STRING
+		"Type of build options are Release and Debug" 
+		FORCE)
+	
+endif()
+message(STATUS "The build option chosen is: ${CMAKE_BUILD_TYPE}")
 
-set(MASKING_SOURCES
-    masking/get_rx_tx_mask.c
-    )
-# adding the header files (.h) is need for integration with some IDEs like CLion
+# Set compilation flags for the project
+add_compile_options(-Wall -Wextra)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS_DEBUG "-g2 -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+message(STATUS "The defualt c DEBUG flags are: ${CMAKE_CXX_FLAGS_DEBUG}")
+message(STATUS "The defualt c RELEASE flags are: ${CMAKE_CXX_FLAGS_RELEASE}")
 
-add_library(masking_lib STATIC
-    ${MASKING_SOURCES})
+# Add sub-directory, that contains the utilities library
+# include_directories(utils)
+add_subdirectory(masking)
+add_subdirectory(checkout)
+add_subdirectory(utils)
 
-target_include_directories(masking_lib PUBLIC .)
+add_executable(sample_project 
+			   ${SAMPLE_PROJECT_SOURCES})
 
+target_link_libraries(sample_project PUBLIC masking)
+target_link_libraries(sample_project PUBLIC checkout)
+# target_link_libraries(sample_project INTERFACE utils)
 
-# add_executable(${BINARY}_run ${SOURCES})
+# message(STATUS "Linking ${CMAKE_PROJECT_NAME} to ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
 
-# add_library(${BINARY}_lib STATIC ${SOURCES})
+#Cahche rules!
+# if a variable was already set, it won't be set again!
+# set(INSTALL_LOCATION "/usr" CACHE STRING "Install location for stuff")
+# set(INSTALL_LOCATION "/opt" CACHE STRING "")
+# message(STATUS "Stuff will be installed to: ${INSTALL_LOCATION}")
 
-set(BINARY ${CMAKE_PROJECT_NAME})
+# set(INSTALL_LOCATION "/usr" CACHE STRING "Install location for stuff")
+# set(INSTALL_LOCATION "/opt" CACHE STRING "Install location for stuff" FORCE)
+# message(STATUS "Stuff will be installed to: ${INSTALL_LOCATION}")
 
-# file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp *.c)
+# set(INSTALL_LOCATION "/usr")
+# set(INSTALL_LOCATION "/opt" CACHE STRING "Install location for stuff")
+# message(STATUS "Stuff will be installed to: ${INSTALL_LOCATION}")
 
-# set(SOURCES ${SOURCES})
-
-set(CHECKOUT_SOURCES
-    checkout/checkout.cpp
-    masking/get_rx_tx_mask.c
-    )
-# adding the header files (.h) is need for integration with some IDEs like CLion
-
-add_library(checkout_lib STATIC
-    ${CHECKOUT_SOURCES})
-
-target_include_directories(checkout_lib PUBLIC .)
-
-
-add_executable(${BINARY}_run main.cpp)
-
-# add_library(${BINARY}_lib STATIC ${SOURCES})
+string(TOUPPER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_UCASE)
+message(DEPRECATION ">> C++ Compile Flags (for ${CMAKE_BUILD_TYPE}): \
+${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE_UCASE}}")

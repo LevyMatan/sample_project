@@ -9,9 +9,9 @@ configure_file(SampleProjectConfig.h.in SampleProjectConfig.h)
 # target_include_directories(SampleProject PUBLIC "${PROJECT_BINARY_DIR}")
 
 include_directories("${PROJECT_BINARY_DIR}")
-message(STATUS "PROJECT_BINARY_DIR = ${PROJECT_BINARY_DIR}")
-include_directories(lib/googletest/googlemock/include)
-include_directories(src/include)
+# message(STATUS "PROJECT_BINARY_DIR = ${PROJECT_BINARY_DIR}")
+# include_directories(lib/googletest/googlemock/include)
+# include_directories(src/utils)
 
 add_subdirectory(src)
 add_subdirectory(test)

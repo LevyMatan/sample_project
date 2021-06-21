@@ -9,7 +9,7 @@
 extern "C" {
 #endif // __cplusplus 
     
-uint32_t get_rx_tx_mask(uint32_t a_rx_tx_mask_array[] , const int payload_index, const int number_of_payloads);
+uint32_t get_rx_tx_mask(uint32_t a_rx_tx_mask_array[] , const uint32_t payload_index, const uint32_t number_of_payloads);
 
 #ifdef __cplusplus 
 }

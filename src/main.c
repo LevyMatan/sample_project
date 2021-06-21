@@ -1,6 +1,6 @@
 #include <stdio.h>
-// #include "get_rx_tx_mask.h"
-// #include "SampleProjectConfig.h"
+#include "get_rx_tx_mask.h"
+#include "SampleProjectConfig.h"
 
 void hello_not_used(void)
 {

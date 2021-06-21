@@ -18,5 +18,5 @@ message("${TEST_SOURCES}")
 add_executable(${BINARY} ${SOURCES})
 
 add_test(NAME ${BINARY} COMMAND ${BINARY})
-
-target_link_libraries(${BINARY} PUBLIC masking_lib checkout_lib gtest)
+include_directories(${CMAKE_SOURCE_DIR}/src/utils)
+target_link_libraries(${BINARY} PUBLIC masking checkout gtest)
