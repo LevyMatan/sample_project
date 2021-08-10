@@ -63,3 +63,4 @@ jobs:
         run: |
           ./build/test/SampleProject_test
           ./build/src/sample_project
+          7
