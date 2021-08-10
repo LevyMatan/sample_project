@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <bitset>
 #include "get_rx_tx_mask.h"
 #include "SampleProjectConfig.h"
 
