@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.17.3)
 # project command initialises the ${PROJECT_NAME} variale
 project("SampleProject" VERSION 1.0)
 
+enable_testing()
+
 # set the project name and version 
 configure_file(SampleProjectConfig.h.in SampleProjectConfig.h)
 

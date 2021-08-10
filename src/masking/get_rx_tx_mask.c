@@ -6,10 +6,6 @@
 #define NUM_OF_BITS_IN_WORD (32U)
 #define ERROR_MSG           (0xFFFFFFFF)
 
-#define BITMASK_OF_LENGTH(x) ( (1 << (x)) - 1)
-#define DIVIDE_BY_32(x)      ( (x) >> 5      )
-#define MIN(x,y)             (((x) < (y)) ? (x) : (y) )
-
 uint32_t get_rx_tx_mask(uint32_t a_rx_tx_mask_array[] , const uint32_t payload_index, const uint32_t number_of_payloads)
 {
     if(number_of_payloads > MAX_PAYLOADS)

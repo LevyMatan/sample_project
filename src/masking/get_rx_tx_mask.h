@@ -4,6 +4,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#define BITMASK_OF_LENGTH(x) ( (1 << (x)) - 1)
+#define DIVIDE_BY_32(x)      ( (x) >> 5      )
+#define MIN(x,y)             (((x) < (y)) ? (x) : (y) )
 
 #ifdef __cplusplus 
 extern "C" {
