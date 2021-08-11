@@ -55,7 +55,7 @@ jobs:
         run: |
           if cmake --version
           then
-            $CMAKE_IS_INSTALLED='true'
+            set CMAKE_IS_INSTALLED 'true'
             echo "CMake is installed"
           fi
         
