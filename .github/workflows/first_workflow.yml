@@ -47,6 +47,13 @@ jobs:
       #     cd lib/googletest
       #     git submodule update --init
       #     cd ../..
+      - name: actions-setup-cmake
+        uses: jwlawson/actions-setup-cmake@v1.9
+        with:
+          cmake-version: '3.17.4'
+
+      - name: Use cmake
+        run: cmake --version
 
       # Runs a set of commands using the runners shell
       - name: Run cmake
