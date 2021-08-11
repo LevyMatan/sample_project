@@ -48,10 +48,12 @@ jobs:
       #     git submodule update --init
       #     cd ../..
       - name: Check cmake version
-        run: cmake --version
+        run: |
+          cmake --version
+          echho I am a fail
         
       - name: actions-setup-cmake
-        if: failure()
+        if: ${{ failure() }}
         uses: jwlawson/actions-setup-cmake@v1.9
         with:
           cmake-version: '3.17.4'

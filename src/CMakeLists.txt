@@ -54,5 +54,5 @@ target_link_libraries(sample_project PUBLIC checkout)
 # message(STATUS "Stuff will be installed to: ${INSTALL_LOCATION}")
 
 string(TOUPPER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_UCASE)
-message(DEPRECATION ">> C++ Compile Flags (for ${CMAKE_BUILD_TYPE}): \
-${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE_UCASE}}")
+# message(DEPRECATION ">> C++ Compile Flags (for ${CMAKE_BUILD_TYPE}): \
+# ${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE_UCASE}}")
