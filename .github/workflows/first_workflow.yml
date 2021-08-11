@@ -20,6 +20,8 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    env:
+      CMAKE_IS_INSTALLED: 'false'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: lcov installation
@@ -47,13 +49,24 @@ jobs:
       #     cd lib/googletest
       #     git submodule update --init
       #     cd ../..
+
       - name: Check cmake version
+        continue-on-error: true
         run: |
-          cmake --version
-          echho I am a fail
+          if cmake --version
+          then
+            $CMAKE_IS_INSTALLED='true'
+            echo "CMake is installed"
+          fi
         
+      # - name: Print Job context
+      #   env: 
+      #     JOB_CONTEXT: ${{toJSON(job)}}
+      #   run: |
+      #     echo "Job context: $JOB_CONTEXT"
+
       - name: actions-setup-cmake
-        if: ${{ failure() }}
+        if: ${{ env.CMAKE_IS_INSTALLED == 'false' }}
         uses: jwlawson/actions-setup-cmake@v1.9
         with:
           cmake-version: '3.17.4'
