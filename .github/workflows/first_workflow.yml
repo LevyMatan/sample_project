@@ -55,7 +55,7 @@ jobs:
         run: |
           if cmake --version
           then
-            echo "CMAKE_IS_INSTALLED='true" >> $GITHUB_ENV
+            echo "CMAKE_IS_INSTALLED='true'" >> $GITHUB_ENV
             echo "CMake is installed"
           fi
         
