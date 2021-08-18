@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     
     
     std::cout << "Please enter how many bits to mask:" << std::endl;
-    int bits_to_mask = 0;
+    int64_t bits_to_mask = 0;
     std::cin >> bits_to_mask;
     
     int rx_tx_mask = BITMASK_OF_LENGTH(bits_to_mask);
