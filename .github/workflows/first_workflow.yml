@@ -86,4 +86,4 @@ jobs:
       - name: Run Tests
         run: |
           ./build/test/SampleProject_test
-          ./build/src/sample_project < test_input.txt
+          ./build/src/SampleProject_run < test_input.txt
