@@ -30,11 +30,12 @@ add_subdirectory(masking)
 add_subdirectory(checkout)
 add_subdirectory(utils)
 
-add_executable(sample_project 
+set(ProjectExecutable ${CMAKE_PROJECT_NAME}_run)
+add_executable(${ProjectExecutable} 
 			   ${SAMPLE_PROJECT_SOURCES})
 
-target_link_libraries(sample_project PUBLIC masking)
-target_link_libraries(sample_project PUBLIC checkout)
+target_link_libraries(${ProjectExecutable} PUBLIC masking)
+target_link_libraries(${ProjectExecutable} PUBLIC checkout)
 # target_link_libraries(sample_project INTERFACE utils)
 
 # message(STATUS "Linking ${CMAKE_PROJECT_NAME} to ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")

@@ -1,6 +1,6 @@
 set(BINARY ${CMAKE_PROJECT_NAME}_test)
 
-set(SOURCES
+set(TEST_SOURCES
     main.cpp
     checkout/checkout_test.cpp
     masking/get_rx_tx_mask_test.cpp
@@ -10,14 +10,14 @@ set(SOURCES
 # file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp)
 
 # set(SOURCES ${TEST_SOURCES})
-message("Test folder CMakeLists.txt")
-message("${SOURCES}")
+message("**--** Test folder CMakeLists.txt **--**")
+message("All test files that are compiled:")
 message("${TEST_SOURCES}")
-message("${SOURCES}")
-message("${TEST_SOURCES}")
-add_executable(${BINARY} ${SOURCES})
+add_executable(${BINARY} ${TEST_SOURCES})
 
-message("Add test arguments: ${BINARY}")
+message("")
+
+message("**--** Target binary file: **--** \n${BINARY}")
 add_test(NAME ${BINARY} COMMAND ${BINARY})
 include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 target_link_libraries(${BINARY} PUBLIC masking checkout gtest)
