@@ -2,6 +2,7 @@ set(BINARY ${CMAKE_PROJECT_NAME}_test)
 
 set(TEST_SOURCES
     main.cpp
+    fibonacci/fibonacci_test.cpp
     checkout/checkout_test.cpp
     masking/get_rx_tx_mask_test.cpp
     print_file_name/print_file_name_test.cpp
@@ -20,4 +21,4 @@ message("")
 message("**--** Target binary file: **--** \n${BINARY}")
 add_test(NAME ${BINARY} COMMAND ${BINARY})
 include_directories(${CMAKE_SOURCE_DIR}/src/utils)
-target_link_libraries(${BINARY} PUBLIC masking checkout gtest)
+target_link_libraries(${BINARY} PUBLIC fibonacci masking checkout gtest)
