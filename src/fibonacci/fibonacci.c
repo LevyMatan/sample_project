@@ -32,7 +32,10 @@ uint32_t fib(const uint32_t n)
             a_fib[u_fib_idx-1] = a_fib[u_fib_idx-2] + a_fib[u_fib_idx-3];
         }
 
-        return a_fib[n-1];
+        uint32_t u_fib_num = a_fib[n-1];
+
+        free(a_fib);
+        return u_fib_num;
         
     }
     
