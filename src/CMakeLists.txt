@@ -26,10 +26,11 @@ message(STATUS "The defualt c RELEASE flags are: ${CMAKE_CXX_FLAGS_RELEASE}")
 
 # Add sub-directory, that contains the utilities library
 # include_directories(utils)
+add_subdirectory(utils)
 add_subdirectory(fibonacci)
+add_subdirectory(grid_traveler)
 add_subdirectory(masking)
 add_subdirectory(checkout)
-add_subdirectory(utils)
 
 set(ProjectExecutable ${CMAKE_PROJECT_NAME}_run)
 add_executable(${ProjectExecutable} 
@@ -37,6 +38,8 @@ add_executable(${ProjectExecutable}
 
 target_link_libraries(${ProjectExecutable} PUBLIC masking)
 target_link_libraries(${ProjectExecutable} PUBLIC checkout)
+# target_link_libraries(${ProjectExecutable} PUBLIC utils)
+# target_link_libraries(${ProjectExecutable} PUBLIC grid_traveler)
 # target_link_libraries(sample_project INTERFACE utils)
 
 # message(STATUS "Linking ${CMAKE_PROJECT_NAME} to ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
