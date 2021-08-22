@@ -27,6 +27,7 @@ message(STATUS "The defualt c RELEASE flags are: ${CMAKE_CXX_FLAGS_RELEASE}")
 # Add sub-directory, that contains the utilities library
 # include_directories(utils)
 add_subdirectory(utils)
+add_subdirectory(can_sum)
 add_subdirectory(fibonacci)
 add_subdirectory(grid_traveler)
 add_subdirectory(masking)
