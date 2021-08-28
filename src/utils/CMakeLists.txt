@@ -1,5 +1,9 @@
 # Add source files for our library
 set(UTILS_SOURCES
+    debug.h
+    trace.c
+    vector.c
+    vector.h
     matrix.c
     matrix.h
     print_file_name.h)
