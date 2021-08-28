@@ -1,7 +1,7 @@
 // #ifndef __DEBUG_H__
 // #define __DEBUG_H__
 
-// #include <stdint.h>
+#include <stdint.h>
 // #include <stdio.h>
 
 
@@ -197,5 +197,5 @@ void decrease_indent(void);
     #else
     #define DEBUG_PRINT_VECTOR(p_vec)
     #endif 
-    
+
 #endif /* __TRACE_H__ */
