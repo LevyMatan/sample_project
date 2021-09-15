@@ -22,6 +22,13 @@
           
           4) how_sum(target_sum=0, array=[2, 4])
           * []
+
+
+          Time and Space complexity analysis: (with Memozation)
+          m = target
+          n = array length
+          Time = O(n * m^2)
+          Space = O(m^2)
  * @version 0.1
  * @date 2021-08-27
  * 

@@ -6,6 +6,8 @@ set(UTILS_SOURCES
     vector.h
     matrix.c
     matrix.h
+    linked_list.c
+    linked_list.h
     print_file_name.h)
 
 # Create a new STATIC library! (That is, all the contenet will be compiled, used or not)
