@@ -19,8 +19,10 @@ typedef struct vector_s Vector;
 
 
 Vector* vector_init(const uint32_t len);
+Vector* vector_deep_copy(Vector *p_vec_to_copy);
 Vector* vector_init_from_vector(Vector *p_vec_to_copy);
 Vector* vector_init_from_vector_and_add_num(Vector *p_vec_to_copy, const uint32_t u_val);
+Vector* vector_init_from_vector_and_add_num_and_clear_old(Vector *p_vec_to_copy, const uint32_t u_val);
 
 void vector_clear(Vector *p_vec);
 

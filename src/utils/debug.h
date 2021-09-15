@@ -194,8 +194,12 @@ void decrease_indent(void);
 
     #ifdef DEBUG_PRINT_ON                           
     #define DEBUG_PRINT_VECTOR(p_vec) vector_print(p_vec);
+    #define DEBUG_PRINT_LIST(p_vec) list_print(p_vec);
+    
     #else
     #define DEBUG_PRINT_VECTOR(p_vec)
+    #define DEBUG_PRINT_LIST(p_vec)
     #endif 
 
+    void matan_wait(void);
 #endif /* __TRACE_H__ */

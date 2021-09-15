@@ -52,6 +52,15 @@ void decrease_indent(void)
     g_num_of_tabs--;
 }
 
+void matan_wait(void)
+{
+    volatile uint32_t just_buying_time = 0;
+    for (size_t i = 0; i < 1000000; i++)
+    {
+        just_buying_time = i;
+    }
+
+}
 /*----------------------------------------------------------------*/
 /* PRIVATE FUNCTIONS                                              */
 /*----------------------------------------------------------------*/
