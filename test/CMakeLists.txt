@@ -2,6 +2,7 @@ set(BINARY ${CMAKE_PROJECT_NAME}_test)
 
 set(TEST_SOURCES
     main.cpp
+    construct/construct_test.cpp
     crc/crc_test.cpp
     best_sum/best_sum_test.cpp
     how_sum/how_sum_test.cpp
@@ -26,4 +27,4 @@ message("")
 message("**--** Target binary file: **--** \n${BINARY}")
 add_test(NAME ${BINARY} COMMAND ${BINARY})
 include_directories(${CMAKE_SOURCE_DIR}/src/utils)
-target_link_libraries(${BINARY} PUBLIC crc best_sum how_sum can_sum grid_traveler fibonacci masking checkout gtest)
+target_link_libraries(${BINARY} PUBLIC construct crc best_sum how_sum can_sum grid_traveler fibonacci masking checkout gtest)
