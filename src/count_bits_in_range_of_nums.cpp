@@ -19,7 +19,6 @@ class Solution{
     
     int find_left_most_bit_idx(int num)
     {
-
         // std::cout << std::bitset<32>(num) << std::endl;
         for(unsigned int bit_idx = 31; bit_idx > 0; bit_idx--)
         {
