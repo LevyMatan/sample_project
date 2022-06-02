@@ -55,10 +55,12 @@ void decrease_indent(void)
 void matan_wait(void)
 {
     volatile uint32_t just_buying_time = 0;
-    for (size_t i = 0; i < 1000000; i++)
+    for (size_t i = 0; i < 3; i++)
     {
         just_buying_time = i;
+        printf("The value of i is: %d\n", just_buying_time);
     }
+
 
 }
 /*----------------------------------------------------------------*/

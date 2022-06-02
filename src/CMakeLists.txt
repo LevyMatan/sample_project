@@ -2,17 +2,16 @@ cmake_minimum_required(VERSION 3.5)
 project(SampleProject LANGUAGES C CXX)
 
 set(SAMPLE_PROJECT_SOURCES
-	main.cpp)
+    main.c)
 
-	
 if("${CMAKE_BUILD_TYPE}" STREQUAL "")
-	set(CMAKE_BUILD_TYPE 
-		Release 
-		CACHE 
-		STRING
-		"Type of build options are Release and Debug" 
-		FORCE)
-	
+    set(CMAKE_BUILD_TYPE
+        Release
+        CACHE
+        STRING
+        "Type of build options are Release and Debug"
+        FORCE)
+
 endif()
 message(STATUS "The build option chosen is: ${CMAKE_BUILD_TYPE}")
 
@@ -39,7 +38,7 @@ add_subdirectory(checkout)
 
 set(ProjectExecutable ${CMAKE_PROJECT_NAME}_run)
 add_executable(${ProjectExecutable} 
-			   ${SAMPLE_PROJECT_SOURCES})
+               ${SAMPLE_PROJECT_SOURCES})
 
 target_link_libraries(${ProjectExecutable} PUBLIC masking)
 target_link_libraries(${ProjectExecutable} PUBLIC checkout)

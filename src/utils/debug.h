@@ -2,7 +2,7 @@
 // #define __DEBUG_H__
 
 #include <stdint.h>
-// #include <stdio.h>
+#include <stdio.h>
 
 
 // #ifdef __cplusplus 
