@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -28,12 +28,12 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y lcov
-        
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-          
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -58,9 +58,9 @@ jobs:
             echo "CMAKE_IS_INSTALLED='true'" >> $GITHUB_ENV
             echo "CMake is installed"
           fi
-        
+
       # - name: Print Job context
-      #   env: 
+      #   env:
       #     JOB_CONTEXT: ${{toJSON(job)}}
       #   run: |
       #     echo "Job context: $JOB_CONTEXT"
@@ -80,10 +80,10 @@ jobs:
       - name: Run make
         run: |
           cd build
-          make 
+          make
 
       # Runs a set of commands using the runners shell
       - name: Run Tests
         run: |
-          ./build/test/SampleProject_test
+          ctest
           ./build/src/SampleProject_run < test_input.txt
