@@ -20,7 +20,7 @@ TEST(CanSum, BaseCases) {
     // Loop over target nums
     for (uint32_t target_num_idx = 0; target_num_idx < u_num_of_targets; target_num_idx++)
     {
-        std::cout << "For target of " << a_target_num[target_num_idx] << ", ";
+        std::cout << "For target of " << std::dec << a_target_num[target_num_idx] << ", ";
         if (can_sum(a_target_num[target_num_idx], a_array_of_nums, u_array_len))
         {
             std::cout << "there is a combination of numbers that sums up for the target" << std::endl;
