@@ -7,14 +7,14 @@
 /**
  * @brief Get the left most bit object
  *        from a given number.
- *        returns the same number only with the left most bit set. 
- * 
+ *        returns the same number only with the left most bit set.
+ *
  * @param u_num The number to get the left most bit from
- * @return uint32_t 
+ * @return uint32_t
  */
 uint32_t get_left_most_bit(uint32_t u_num)
 {
-    
+
     u_num |= (u_num >> 1);
     u_num |= (u_num >> 2);
     u_num |= (u_num >> 4);
@@ -22,16 +22,16 @@ uint32_t get_left_most_bit(uint32_t u_num)
     u_num |= (u_num >> 16);
 
     uint64_t u_num_extened = u_num + 1;
-    u_num = (uint32_t)(u_num_extened >> 1); 
+    u_num = (uint32_t)(u_num_extened >> 1);
     return u_num;
 }
 
 /**
  * @brief Get the bit idx object
  *        Assume that u_num has one and only one bit set.
- * 
- * @param u_num 
- * @return uint32_t 
+ *
+ * @param u_num
+ * @return uint32_t
  */
 uint32_t get_bit_idx(uint32_t u_num)
 {
@@ -55,7 +55,7 @@ uint16_t crc16_ccitt(uint16_t u_data)
 
     uint32_t u_left_most_bit_set = get_left_most_bit(u_num);
     DEBUG_PRINT("u_left_most_bit_set = 0x%08x\n", u_left_most_bit_set);
-
+    DEBUG_PRINT("u_data = %u\n", u_data);
     uint32_t u_bit_idx = get_bit_idx(u_left_most_bit_set);
     DEBUG_PRINT("u_left_most_bit_set = %d\n", u_bit_idx);
     while (u_bit_idx > 15)
@@ -70,7 +70,7 @@ uint16_t crc16_ccitt(uint16_t u_data)
         u_bit_idx = get_bit_idx(u_left_most_bit_set);
         DEBUG_PRINT("u_left_most_bit_set = %d\n", u_bit_idx);
     }
-    
+
     const uint16_t u_crc = (uint16_t)(u_num & 0x0000FFFF);
 
     DEBUG_PRINT_FUNCTION_END();

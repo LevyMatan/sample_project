@@ -1,12 +1,12 @@
 /**
  * @file linked_list.c
  * @author Matan Levy (levymatanlevy@gmail.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2021-08-30
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 #include <stdint.h>
 #include <stdlib.h>
@@ -31,13 +31,13 @@ Node* list_append(Node* p_last_elem, const uint32_t target, Vector* p_vec)
     {
         p_last_elem->p_next = p_new_last_elem;
     }
-    return p_new_last_elem; 
+    return p_new_last_elem;
 }
 
-volatile Node* list_search(volatile Node* p_root, const uint32_t target)
+Node* list_search(Node* p_root, const uint32_t target)
 {
     DEBUG_PRINT_FUNCTION_START();
-    volatile Node* p_cur_node = p_root;
+    Node* p_cur_node = p_root;
     while (p_cur_node)
     {
         if (p_cur_node->target_sum == target)
@@ -50,7 +50,7 @@ volatile Node* list_search(volatile Node* p_root, const uint32_t target)
     DEBUG_PRINT("Found Node* = %p\n", p_cur_node);
     DEBUG_PRINT_FUNCTION_END();
     return p_cur_node;
-    
+
 }
 Node* list_end(Node* p_root)
 {
@@ -86,7 +86,7 @@ void list_node_clear(Node* p_node_to_clear)
     vector_clear(p_node_to_clear->p_vec);
     p_node_to_clear->p_vec = NULL;
 }
-void list_node_replace(volatile Node* p_node_to_replace, Vector* p_new_vec)
+void list_node_replace(Node* p_node_to_replace, Vector* p_new_vec)
 {
     DEBUG_PRINT_FUNCTION_START();
     matan_wait();
@@ -121,11 +121,11 @@ void list_node_replace(volatile Node* p_node_to_replace, Vector* p_new_vec)
         p_node_to_replace->p_vec = p_new_vec;
 
     }
-    
+
     DEBUG_PRINT_FUNCTION_END();
 }
 
-Node* list_add_at_begining(volatile Node* p_root, const uint32_t target, Vector* p_vec)
+Node* list_add_at_begining(Node* p_root, const uint32_t target, Vector* p_vec)
 {
     Node* p_new_root = (Node*)calloc(1, sizeof(Node));
     p_new_root->p_vec = vector_deep_copy(p_vec);
@@ -134,16 +134,16 @@ Node* list_add_at_begining(volatile Node* p_root, const uint32_t target, Vector*
 
     return p_new_root;
 }
-void list_print(volatile Node* p_root)
+void list_print(Node* p_root)
 {
     while (p_root)
     {
         list_node_print(p_root);
         p_root = p_root->p_next;
     }
-    
+
 }
-void list_node_print(volatile Node* p_node)
+void list_node_print(Node* p_node)
 {
         DEBUG_PRINT("Node: %p\n", p_node);
         if(p_node)

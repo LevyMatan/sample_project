@@ -4,7 +4,7 @@
 #include "vector.h"
 #include "linked_list.h"
 
-    
+
     #define BEST_SUM_DEBUG_INTRO(_target_num, _a_num_array, _u_array_len, _p_memo_vec)                \
     DEBUG_PRINT_FUNCTION_START();                                                                    \
     DEBUG_PRINT("called as: how_sum(%d, [", _target_num);                                                       \
@@ -55,7 +55,7 @@
 //                     {
 //                         p_shortest_combo = p_new_combo;
 //                     }
-                    
+
 //                 }
 //             }
 
@@ -63,7 +63,7 @@
 //         }
 
 //         p_ret_vec = p_shortest_combo;
-        
+
 //     }
 
 //     DEBUG_PRINT("I am returning:\n");
@@ -77,17 +77,17 @@
 //     // p_memo_vec = NULL;
 //     DEBUG_PRINT_FUNCTION_END();
 //     return p_ret_vec;
-    
+
 // }
 
-Vector* best_sum(const uint32_t target_num, const uint32_t* const a_num_array, const uint32_t u_array_len, volatile Node **p_memo_list)
+Vector* best_sum(const uint32_t target_num, const uint32_t* const a_num_array, const uint32_t u_array_len, Node **p_memo_list)
 {
 
-    volatile Node* p_print = (*p_memo_list);
+    Node* p_print = (*p_memo_list);
     BEST_SUM_DEBUG_INTRO(target_num, a_num_array, u_array_len, p_print);
 
     Vector *p_ret_vec = NULL;
-    volatile Node* p_old_list_node = list_search(*p_memo_list, target_num);
+    Node* p_old_list_node = list_search(*p_memo_list, target_num);
     if (p_old_list_node)
     {
         p_ret_vec = p_old_list_node->p_vec;
@@ -114,12 +114,12 @@ Vector* best_sum(const uint32_t target_num, const uint32_t* const a_num_array, c
                     matan_wait();
                     matan_wait();
 
-                    
+
                     if ((NULL == p_shortest_combo) || (p_shortest_combo && (p_new_combo->len < p_shortest_combo->len)))
                     {
                         p_shortest_combo = p_new_combo;
                     }
-                    
+
                 }
             }
 
@@ -129,10 +129,10 @@ Vector* best_sum(const uint32_t target_num, const uint32_t* const a_num_array, c
             DEBUG_PRINT("LAST MEMO!!!\n");
             DEBUG_PRINT_LIST((*p_memo_list));
         }
-        
+
 
         p_ret_vec = p_shortest_combo;
-        
+
     }
 
     DEBUG_PRINT("Adding new memo:\n");
@@ -154,11 +154,10 @@ Vector* best_sum(const uint32_t target_num, const uint32_t* const a_num_array, c
         DEBUG_PRINT_VECTOR(p_ret_vec);
         DEBUG_PRINT_NO_IDENT("\n");
         *p_memo_list = list_add_at_begining(*p_memo_list, target_num, p_ret_vec);
-        
+
     }
-    
+
     DEBUG_PRINT_FUNCTION_END();
     return p_ret_vec;
-    
-}
 
+}
