@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.17.3)
+cmake_minimum_required(VERSION 3.16.3)
 
 # project command initialises the ${PROJECT_NAME} variale
 project("SampleProject" VERSION 1.0)
 
 enable_testing()
 
-# set the project name and version 
+# set the project name and version
 configure_file(SampleProjectConfig.h.in SampleProjectConfig.h)
 
 # target_include_directories(SampleProject PUBLIC "${PROJECT_BINARY_DIR}")
@@ -17,7 +17,6 @@ include_directories("${PROJECT_BINARY_DIR}")
 
 add_subdirectory(src)
 add_subdirectory(test)
-add_subdirectory(lib/googletest)
 
 # Cretae an excutable, takes two parameters:
 # First - executable name
