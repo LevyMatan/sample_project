@@ -103,4 +103,4 @@ jobs:
           major_pattern: "[MAJOR-CRC]"
           minor_pattern: "[BUG-CRC]"
           change_path: "src/crc"
-          namespace: db
+          namespace: crc

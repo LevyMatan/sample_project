@@ -14,7 +14,6 @@ INCLUDES
 ----------------------------------------------------------------*/
 #include "debug.h"
 
-#ifdef DEBUG_PRINT_ON
 
 /*----------------------------------------------------------------
 PRIVATE VARIABLES
@@ -51,6 +50,8 @@ void decrease_indent(void)
 {
     g_num_of_tabs--;
 }
+
+#ifdef DEBUG_PRINT_ON
 
 void matan_wait(void)
 {
