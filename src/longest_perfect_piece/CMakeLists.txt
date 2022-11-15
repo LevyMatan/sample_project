@@ -1,28 +1,21 @@
 # Add source files for our library
-set(CONSTRUCT_SOURCES
-    construct.cpp
-    construct.hpp)
+set(LONGEST_PERFECT_PIECE_SOURCES
+    longest_perfect_piece.c
+    longest_perfect_piece.h)
 
 # Create a new STATIC library! (That is, all the contenet will be compiled, used or not)
-add_library(construct
+add_library(longest_perfect_piece
             STATIC
-            ${CONSTRUCT_SOURCES})
+            ${LONGEST_PERFECT_PIECE_SOURCES})
 
-# include_directories(${CMAKE_SOURCE_DIR}/src/utils)
+include_directories(${CMAKE_SOURCE_DIR}/src/utils)
+
+target_link_libraries(longest_perfect_piece PUBLIC utils)
 
 # Set the directory as public for include -> this way, modules that need to use the header files of this library can access it.
-target_include_directories(construct
+target_include_directories(longest_perfect_piece
                            PUBLIC
                            ${CMAKE_CURRENT_SOURCE_DIR})
-
-
-
-
-
-
-
-
-
 
 # # set(BINARY ${CMAKE_PROJECT_NAME})
 

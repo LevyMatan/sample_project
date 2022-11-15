@@ -5,10 +5,10 @@
 #include <stdio.h>
 
 
-// #ifdef __cplusplus 
+// #ifdef __cplusplus
 // extern "C" {
-// #endif // __cplusplus 
-    
+// #endif // __cplusplus
+
 // #define DEBUG_PRINT_ON
 // #ifdef DEBUG_PRINT_ON
 // #define DEBUG_PRINT(...) printf( __VA_ARGS__)
@@ -20,9 +20,9 @@
 // #define DEBUG_PRINT_FUNC_END(...) DEBUG_PRINT("END: %s, line: %d\n", __FUNCTION__, __LINE__)
 
 
-// #ifdef __cplusplus 
+// #ifdef __cplusplus
 // }
-// #endif // __cplusplus 
+// #endif // __cplusplus
 
 // #endif //__DEBUG_H__
 
@@ -47,7 +47,6 @@ EXTERNAL INCLUDES
 /*----------------------------------------------------------------
 PRIVATE INCLUDES
 ----------------------------------------------------------------*/
-#define DEBUG_PRINT_ON
 #define SINGLE_THREAD_DEBUG_MODE_ON
 
 /*----------------------------------------------------------------
@@ -137,8 +136,8 @@ void decrease_indent(void);
 #else
 
 #define GET_INDENT()          (0)
-#define INCREASE_INDENT()          
-#define DECREASE_INDENT()          
+#define INCREASE_INDENT()
+#define DECREASE_INDENT()
 
 #endif /*SINGLE_THREAD_DEBUG_MODE_ON*/
 
@@ -192,14 +191,14 @@ void decrease_indent(void);
 
 #endif /* DEBUG_PRINT_ON */
 
-    #ifdef DEBUG_PRINT_ON                           
+    #ifdef DEBUG_PRINT_ON
     #define DEBUG_PRINT_VECTOR(p_vec) vector_print(p_vec);
     #define DEBUG_PRINT_LIST(p_vec) list_print(p_vec);
-    
+
     #else
     #define DEBUG_PRINT_VECTOR(p_vec)
     #define DEBUG_PRINT_LIST(p_vec)
-    #endif 
+    #endif
 
     void matan_wait(void);
 #endif /* __TRACE_H__ */

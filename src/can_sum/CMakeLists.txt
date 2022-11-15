@@ -4,17 +4,15 @@ set(CAN_SUM_SOURCES
     can_sum.h)
 
 # Create a new STATIC library! (That is, all the contenet will be compiled, used or not)
-add_library(can_sum 
-            STATIC 
+add_library(can_sum
+            STATIC
             ${CAN_SUM_SOURCES})
 
 # include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 
-# target_link_libraries(grid_traveler PUBLIC utils)
-
 # Set the directory as public for include -> this way, modules that need to use the header files of this library can access it.
-target_include_directories(can_sum 
-                           PUBLIC 
+target_include_directories(can_sum
+                           PUBLIC
                            ${CMAKE_CURRENT_SOURCE_DIR})
 
 

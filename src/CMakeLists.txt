@@ -18,7 +18,9 @@ message(STATUS "The build option chosen is: ${CMAKE_BUILD_TYPE}")
 # Set compilation flags for the project
 add_compile_options(-Wall -Wextra)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS_DEBUG "-g2 -O0 -Wl,-Map,output.map")
+set(CMAKE_C_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON -Wl,-Map,output.map")
+set(CMAKE_CXX_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON -Wl,-Map,output.map")
+set(CMAKE_C_FLAGS_RELEASE "-O2 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 message(STATUS "The defualt c DEBUG flags are: ${CMAKE_CXX_FLAGS_DEBUG}")
 message(STATUS "The defualt c RELEASE flags are: ${CMAKE_CXX_FLAGS_RELEASE}")
@@ -35,6 +37,7 @@ add_subdirectory(fibonacci)
 add_subdirectory(grid_traveler)
 add_subdirectory(masking)
 add_subdirectory(checkout)
+add_subdirectory(longest_perfect_piece)
 
 set(ProjectExecutable ${CMAKE_PROJECT_NAME}_run)
 add_executable(${ProjectExecutable}
@@ -43,7 +46,6 @@ add_executable(${ProjectExecutable}
 # target_link_libraries(${ProjectExecutable} PUBLIC masking)
 # target_link_libraries(${ProjectExecutable} PUBLIC checkout)
 # target_link_libraries(${ProjectExecutable} PUBLIC utils)
-# target_link_libraries(${ProjectExecutable} PUBLIC grid_traveler)
 # target_link_libraries(sample_project INTERFACE utils)
 
 # message(STATUS "Linking ${CMAKE_PROJECT_NAME} to ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")

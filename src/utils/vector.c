@@ -3,8 +3,6 @@
 #include "vector.h"
 #include "debug.h"
 
-#define DEBUG_PRINT_ON
-
 Vector* vector_init(const uint32_t len)
 {
     DEBUG_PRINT_FUNCTION_START();
@@ -42,7 +40,7 @@ Vector* vector_deep_copy(Vector *p_vec_to_copy)
             p_new_vec->p_vec[i] = p_vec_to_copy->p_vec[i];
         }
     }
-    
+
     DEBUG_PRINT_FUNCTION_END();
     return p_new_vec;
 }
@@ -96,13 +94,13 @@ Vector* vector_init_from_vector_and_add_num(Vector *p_vec_to_copy, const uint32_
         p_new_vec->len = 1;
         p_new_vec->p_vec = (uint32_t*)calloc(p_new_vec->len, sizeof(uint32_t));
     }
-    
+
     // DEBUG_PRINT("p_new_vec->p_vec[p_new_vec->len - 1] = u_val\n");
     // DEBUG_PRINT("p_new_vec->len - 1 = %d\n", p_new_vec->len - 1);
     // DEBUG_PRINT("p_new_vec->p_vec[p_new_vec->len - 1] = %d\n", p_new_vec->p_vec[p_new_vec->len - 1]);
     // DEBUG_PRINT("u_val = %d\n" , u_val);
     p_new_vec->p_vec[p_new_vec->len - 1] = u_val;
-    
+
     DEBUG_PRINT_FUNCTION_END();
     return p_new_vec;
 }
@@ -119,7 +117,7 @@ Vector* vector_init_from_vector_and_add_num_and_clear_old(Vector *p_vec_to_copy,
     // }
     Vector *p_new_vec = vector_init_from_vector_and_add_num(p_vec_to_copy, u_val);
     // vector_clear(p_vec_to_copy);
-    
+
     DEBUG_PRINT_FUNCTION_END();
     return p_new_vec;
 }
@@ -147,7 +145,7 @@ void vector_clear(Vector *p_vec)
         matan_wait();
         free(p_vec);
     }
-    
+
     DEBUG_PRINT_FUNCTION_END();
 }
 
@@ -159,11 +157,11 @@ uint32_t get_vector_value(Vector *p_vec, const uint32_t elem_idx)
         {
             return p_vec->p_vec[elem_idx];
         }
-        
+
     }
 
     return UINT32_MAX;
-    
+
 }
 void set_vector_value(Vector *p_vec, const uint32_t elem_idx, const uint32_t val)
 {
@@ -173,9 +171,9 @@ void set_vector_value(Vector *p_vec, const uint32_t elem_idx, const uint32_t val
         {
             p_vec->p_vec[elem_idx] = val;
         }
-        
+
     }
-    
+
 }
 
 void vector_print(Vector *p_vec)
@@ -191,14 +189,13 @@ void vector_print(Vector *p_vec)
             }
             printf("%d ", get_vector_value(p_vec, p_vec->len - 1));
         }
-        
+
         printf("]");
     }
     else
     {
         printf("NULL");
     }
-    
-    
-}
 
+
+}

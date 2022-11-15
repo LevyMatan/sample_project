@@ -13,8 +13,6 @@
 #include "linked_list.h"
 #include "debug.h"
 
-#define DEBUG_PRINT_ON
-
 Node* list_init(void)
 {
     Node* p_root = (Node*)calloc(1, sizeof(Node));

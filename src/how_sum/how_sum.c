@@ -3,16 +3,15 @@
 #include "debug.h"
 #include "vector.h"
 
-    
     #define HOW_SUM_DEBUG_INTRO(_target_num, _a_num_array, _u_array_len, _p_memo_vec)                \
     DEBUG_PRINT_FUNCTION_START();                                                                    \
-    DEBUG_PRINT("called as: how_sum(%d, [", _target_num);                                                       \
+    DEBUG_PRINT("called as: how_sum(%d, [", _target_num);                                            \
     for (size_t i = 0; i < _u_array_len; i++)                                                        \
     {                                                                                                \
         DEBUG_PRINT_NO_IDENT("%d, ", _a_num_array[i]);                                               \
     }                                                                                                \
-    DEBUG_PRINT_NO_IDENT("], ");                                                                              \
-    DEBUG_PRINT_NO_IDENT("p_memo_vec=");                                                                      \
+    DEBUG_PRINT_NO_IDENT("], ");                                                                     \
+    DEBUG_PRINT_NO_IDENT("p_memo_vec=");                                                             \
     DEBUG_PRINT_VECTOR(_p_memo_vec);                                                                 \
     DEBUG_PRINT_NO_IDENT(")\n");
 
@@ -62,13 +61,13 @@ Vector* how_sum(const uint32_t target_num, const uint32_t* const a_num_array, co
                     p_memo_vec = NULL;
                 }
             }
-            
+
         }
         else
         {
             DEBUG_PRINT("Next number is greater than target: NULL\n");
         }
-           
+
         if(NULL == p_ret_vec)
         {
             p_ret_vec = how_sum(target_num, (a_num_array+1), (u_array_len-1), p_memo_vec);
@@ -77,7 +76,7 @@ Vector* how_sum(const uint32_t target_num, const uint32_t* const a_num_array, co
         {
             DEBUG_PRINT("Already found another path\n");
         }
-        
+
     }
 
     DEBUG_PRINT("I am returning:\n");
@@ -91,6 +90,5 @@ Vector* how_sum(const uint32_t target_num, const uint32_t* const a_num_array, co
     // p_memo_vec = NULL;
     DEBUG_PRINT_FUNCTION_END();
     return p_ret_vec;
-    
-}
 
+}

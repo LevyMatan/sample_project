@@ -18,6 +18,7 @@ add_subdirectory(fibonacci)
 add_subdirectory(checkout)
 add_subdirectory(masking)
 add_subdirectory(print_file_name)
+add_subdirectory(longest_perfect_piece)
 
 # set(TEST_SOURCES
 #     main.cpp
