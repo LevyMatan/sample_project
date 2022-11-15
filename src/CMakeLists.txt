@@ -18,8 +18,8 @@ message(STATUS "The build option chosen is: ${CMAKE_BUILD_TYPE}")
 # Set compilation flags for the project
 add_compile_options(-Wall -Wextra)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_C_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON -Wl,-Map,output.map")
-set(CMAKE_CXX_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON -Wl,-Map,output.map")
+set(CMAKE_C_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON")
+set(CMAKE_CXX_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON")
 set(CMAKE_C_FLAGS_RELEASE "-O2 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 message(STATUS "The defualt c DEBUG flags are: ${CMAKE_CXX_FLAGS_DEBUG}")
@@ -38,6 +38,7 @@ add_subdirectory(grid_traveler)
 add_subdirectory(masking)
 add_subdirectory(checkout)
 add_subdirectory(longest_perfect_piece)
+add_subdirectory(sum_of_beauty)
 
 set(ProjectExecutable ${CMAKE_PROJECT_NAME}_run)
 add_executable(${ProjectExecutable}

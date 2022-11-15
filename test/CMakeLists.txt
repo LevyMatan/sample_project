@@ -19,6 +19,7 @@ add_subdirectory(checkout)
 add_subdirectory(masking)
 add_subdirectory(print_file_name)
 add_subdirectory(longest_perfect_piece)
+add_subdirectory(sum_of_beauty)
 
 # set(TEST_SOURCES
 #     main.cpp
