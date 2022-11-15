@@ -89,18 +89,7 @@ jobs:
           cd build
           ctest
 
-      - name: Application Version
-        id: version
-        uses: paulhatch/semantic-version@v4.0.2
+      - name: Bump version and push tag
+        uses: hennejg/github-tag-action@v4.1.jh1
         with:
-          major_pattern: "[MAJOR]"
-          minor_pattern: "[BUG]"
-          change_path: "src"
-      - name: crc Version
-        id: crc-version
-        uses: paulhatch/semantic-version@v4.0.2
-        with:
-          major_pattern: "[MAJOR-CRC]"
-          minor_pattern: "[BUG-CRC]"
-          change_path: "src/crc"
-          namespace: crc
+          github_token: ${{ secrets.GITHUB_TOKEN }}
