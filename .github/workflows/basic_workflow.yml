@@ -16,6 +16,7 @@ jobs:
       - name: print greeting
         run: echo "Hello workflow!"
   second-job:
+    needs: basic
     runs-on: ubuntu-latest
     steps:
       - name: First step of second-job
