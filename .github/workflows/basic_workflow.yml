@@ -6,22 +6,11 @@ on:
   - push
 
 jobs:
-  basic:
-    # As mentioned, a job runs on a Runner
-    # Hence we now have to define that Runner
-    # For more info search for "github runners"
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: print greeting
-        run: echo "Hello workflow!"
-  second-job:
-    needs: basic
+  basic:
     runs-on: ubuntu-latest
     steps:
-      - name: First step of second-job
+      - name: Output GitHub context
         run: |
-          echo "First step of second-job"
-      - name: Second step of second-job
-        run: |
-          echo "Second step of second-job"
+          echo "${{ toJSON(github) }}"
+
