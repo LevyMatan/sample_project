@@ -69,11 +69,45 @@ long long GeeksForGeeksPOTD::count_subarrays(int arr[], int n, int k)
      * Same will happen on [4]                               : 1
      * Total will be 0 + 1 + 2 + 1 + 2 + 2 + 1 = 9
      *
-     * After taking a look at the example
-     * One can deduce an algorithm.
-     * For each __num__ in arr:
+     * The above example was misleading! notice the input array is
+     * soreted in acending order. Hence once we found the first element
+     * strickly greater than K, all following element were as well.
+     *
+     * Lets look at another example
+     * Arr = {5, 4, 6, 2} K = 4
+     * Lets list all subarrays that start with a specific index.
+     * ==> For index 0 are:
+     * [5], [5, 4], [5, 4, 6], [5, 4, 6, 2]
+     * Since Arr[0] is strickly greater than K=4, all sub-arrays
+     * with this elements are counted.
+     * ==> For index 1, all sub-arrays are:
+     * [4], [4, 6], [4, 6, 2]
+     * Since Arr[1] is not greater than K=4, **NOT** all sub-arrays
+     * including it satisfy the condition. But once an element that is
+     * strickly greater is added to the sub-array, all following are counted.
+     * In this case, this element is in index 2, hence [4, 6], [4, 6, 2] are counted.
+     * ==> For index 2, all subarrays are:
+     * [6], [6, 2]
+     * Again reapting the same logic, all subarrays are counted.
+     * ==> For index 3, there is only a single subarray:
+     * [2]
+     * which is not counted.
+     *
+     * Now we can derive a nice easy algorithm:
+     *
+     * Initilize `result` to 0
+     * For each __num__ in arr from end to begining:
+     *
      *     if __num__ > k then:
-     *          add length(arr)-idx(__num__)
+     *          smallest_idx_greater_than_K <- idx(__num__)
+     *     end if
+     *
+     *     // The number of all sub-arrays starting with element in idx
+     *     // and including all elements that follow it, is the number of sub-arrays
+     *     // that follow the first element including the one at idx that satisfy the
+     *     // rule to be strickly greater than k.
+     *
+     *     add (length(arr)-smallest_idx_greater_than_K) to `result`;
      *
      */
 
