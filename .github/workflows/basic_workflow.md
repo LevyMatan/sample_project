@@ -82,3 +82,9 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
 ```
+
+## Failing Workflow
+
+What happens when a step fails?
+How do we want to handle it?
+

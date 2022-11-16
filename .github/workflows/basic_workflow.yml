@@ -1,7 +1,9 @@
 name: Basic Workflow
 
 # Allow the workflow to be triggered manually.
-on: workflow_dispatch
+on:
+  - workflow_dispatch
+  - push
 
 jobs:
   basic:
