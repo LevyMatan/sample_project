@@ -39,6 +39,7 @@ add_subdirectory(masking)
 add_subdirectory(checkout)
 add_subdirectory(longest_perfect_piece)
 add_subdirectory(sum_of_beauty)
+add_subdirectory(problem_of_the_day)
 
 set(ProjectExecutable ${CMAKE_PROJECT_NAME}_run)
 add_executable(${ProjectExecutable}
