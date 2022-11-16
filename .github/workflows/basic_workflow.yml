@@ -15,3 +15,5 @@ jobs:
         run: echo "Hello workflow!"
       - name: Print goodbye
         run: echo "Bye Bye!"
+      - name: Get code
+        uses: actions/checkout
