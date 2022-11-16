@@ -21,6 +21,7 @@ Each module under source has a matching (pretty-useless) test under test folder
 ## github actions
 
 Trying to make wonder under the `.github` folder.
+For step by step explantion on workflow open: [this doc](.github/workflows/basic_workflow.md)
 
 ## markdown
 
