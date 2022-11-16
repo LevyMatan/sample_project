@@ -10,11 +10,13 @@ on:
     paths:
       - 'src/**'
       - 'test/**'
+      - '.github/workflows/code_tests.yml'
   pull_request:
     branches: [ master ]
     paths:
       - 'src/**'
       - 'test/**'
+      - '.github/workflows/code_tests.yml'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
