@@ -15,7 +15,5 @@ jobs:
     steps:
       - name: print greeting
         run: echo "Hello workflow!"
-      - name: Print goodbye
-        run: echo "Bye Bye!"
-      - name: Get code
-        uses: actions/checkout@main
+      - name: Fail step
+        run: cd matan_levy_folder_doesnt_exist
