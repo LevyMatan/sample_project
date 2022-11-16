@@ -1,0 +1,13 @@
+name: Issues Workflow
+
+# Allow the workflow to be triggered manually.
+on: issues
+
+jobs:
+
+  basic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Event context
+        run: |
+          echo "${{ toJSON(event) }}"
