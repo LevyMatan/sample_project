@@ -1,6 +1,5 @@
 name: Issues Workflow
 
-# Allow the workflow to be triggered manually.
 on: issues
 
 jobs:
@@ -10,4 +9,4 @@ jobs:
     steps:
       - name: Output Event context
         run: |
-          echo "${{ toJSON(event) }}"
+          echo "${{ toJSON(github.event) }}"
