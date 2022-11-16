@@ -88,3 +88,46 @@ jobs:
 What happens when a step fails?
 How do we want to handle it?
 
+## Running jobs sequentially (default is parallel)
+
+If jobs have dependency, for example, a job that deploys a website or an application.  
+The desired sequence would be to first build and test the website or application **before** deploying it.
+
+```yml
+name: Run Job in sequence
+
+on: push
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Setup enviorment
+        run: |
+          echo "Install some required tools"
+          echo "Env is ready"
+      - name: Compile application
+        run: |
+          echo "Build or compile application"
+          echo "Build done"
+      - name: Run Tests
+        run: |
+          echo "Running tests"
+          echo "Testing Done"
+  deploy:
+    # Here comes the important line
+    needs: build-and-test
+    # The line above this one
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        run: |
+          echo "Download artifacts"
+      - name: Deploy service
+        run: |
+          echo "Deploying..."
+          echo "Done :)"
+
+```

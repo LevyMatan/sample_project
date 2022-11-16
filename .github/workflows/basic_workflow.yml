@@ -15,5 +15,12 @@ jobs:
     steps:
       - name: print greeting
         run: echo "Hello workflow!"
-      - name: Fail step
-        run: cd matan_levy_folder_doesnt_exist
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First step of second-job
+        run: |
+          echo "First step of second-job"
+      - name: Second step of second-job
+        run: |
+          echo "Second step of second-job"
