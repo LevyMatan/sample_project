@@ -16,4 +16,4 @@ jobs:
       - name: Print goodbye
         run: echo "Bye Bye!"
       - name: Get code
-        uses: actions/checkout
+        uses: actions/checkout@main
