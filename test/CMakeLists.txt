@@ -38,6 +38,7 @@ add_subdirectory(masking)
 add_subdirectory(print_file_name)
 add_subdirectory(longest_perfect_piece)
 add_subdirectory(sum_of_beauty)
+add_subdirectory(problem_of_the_day)
 
 # target_link_libraries(${BINARY} PUBLIC construct crc best_sum how_sum can_sum grid_traveler fibonacci masking checkout gtest)
 

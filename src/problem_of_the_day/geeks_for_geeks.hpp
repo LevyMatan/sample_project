@@ -33,5 +33,5 @@ public:
      * @param k
      * @return long long
      */
-    long long count_subarrays(int arr[], int n, int k);
+    static long long count_subarrays(int arr[], int n, int k);
 };
