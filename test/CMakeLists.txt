@@ -8,6 +8,24 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
+set(CMAKE_BUILD_TYPE
+    Debug
+    CACHE
+    STRING
+    "Type of build options are Release and Debug"
+    FORCE)
+
+message(STATUS "The build option chosen is: ${CMAKE_BUILD_TYPE}")
+
+# Set compilation flags for the project
+add_compile_options(-Wall -Wextra)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON")
+set(CMAKE_CXX_FLAGS_DEBUG "-g2 -O0 -DDEBUG_PRINT_ON")
+
+message(STATUS "The defualt c DEBUG flags are: ${CMAKE_CXX_FLAGS_DEBUG}")
+message(STATUS "The defualt c RELEASE flags are: ${CMAKE_CXX_FLAGS_RELEASE}")
+
 add_subdirectory(construct)
 add_subdirectory(crc)
 add_subdirectory(best_sum)
@@ -20,6 +38,10 @@ add_subdirectory(masking)
 add_subdirectory(print_file_name)
 add_subdirectory(longest_perfect_piece)
 add_subdirectory(sum_of_beauty)
+
+# target_link_libraries(${BINARY} PUBLIC construct crc best_sum how_sum can_sum grid_traveler fibonacci masking checkout gtest)
+
+# include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 
 # set(TEST_SOURCES
 #     main.cpp
@@ -47,5 +69,4 @@ add_subdirectory(sum_of_beauty)
 
 # message("**--** Target binary file: **--** \n${BINARY}")
 # add_test(NAME ${BINARY} COMMAND ${BINARY})
-include_directories(${CMAKE_SOURCE_DIR}/src/utils)
 # target_link_libraries(${BINARY} PUBLIC construct crc best_sum how_sum can_sum grid_traveler fibonacci masking checkout gtest)

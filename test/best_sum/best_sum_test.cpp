@@ -2,9 +2,11 @@
 #include "best_sum.h"
 #include "vector.h"
 #include "linked_list.h"
+#include "debug.h"
 
 TEST(BestSum, BaseCases) {
 
+    DEBUG_PRINT("I am a debug print!!\n");
     std::cout << "Testing best_sum() with the following inputs:" << std::endl;
     // uint32_t a_target_num[] = {4, 5, 6, 8, 9, 12, 1098};
     uint32_t a_target_num[] = {19};

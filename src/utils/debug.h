@@ -1,46 +1,10 @@
-// #ifndef __DEBUG_H__
-// #define __DEBUG_H__
 
-#include <stdint.h>
-#include <stdio.h>
-
-
-// #ifdef __cplusplus
-// extern "C" {
-// #endif // __cplusplus
-
-// #define DEBUG_PRINT_ON
-// #ifdef DEBUG_PRINT_ON
-// #define DEBUG_PRINT(...) printf( __VA_ARGS__)
-// #else
-// #define DEBUG_PRINT(...)
-// #endif
-
-// #define DEBUG_PRINT_FUNC_START(...) DEBUG_PRINT("START: %s, line: %d\n", __FUNCTION__, __LINE__)
-// #define DEBUG_PRINT_FUNC_END(...) DEBUG_PRINT("END: %s, line: %d\n", __FUNCTION__, __LINE__)
-
-
-// #ifdef __cplusplus
-// }
-// #endif // __cplusplus
-
-// #endif //__DEBUG_H__
-
-/**
- * @file trace.h
- * @author Matan Levy (levymatanlevy@gmail.com)
- * @brief All common hardcoded data, types, and constants.
- * @version 0.1
- * @date 2020-11-09
- *
- * @copyright Copyright (c) 2020
- *
- */
-#ifndef __TRACE_H__
-#define __TRACE_H__
 /*----------------------------------------------------------------
 EXTERNAL INCLUDES
 ----------------------------------------------------------------*/
+#include <stdint.h>
+#include <stdio.h>
+
 #include <string.h>
 #include <stdlib.h>
 
@@ -62,7 +26,6 @@ EXTERNAL DEFINES
 /*----------------------------------------------------------------
 DEBUG AND TEST NOBS
 ----------------------------------------------------------------*/
-#define DEBUG_PRINT_OFF                 ///< To enable debug prints, compile the project by adding the DEBUG_PRINT_ON compilation flag
 #define DEBUG_PRINT_COLORS_OFF          ///< To enable color changes of console prits
 #define SINGLE_THREAD_DEBUG_MODE_OFF    ///< Since the trace implementation uses globals, which I don't want to protect with locks as it might change the program flow, we will disable the use of identitaion in when not in single thread mode.
 /*----------------------------------------------------------------
@@ -108,6 +71,9 @@ MACROS
 #ifdef DEBUG_PRINT_ON
 
 #define MAX_LOG_FUNCTION_LINE                                           (80)
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
 /**
  * @brief Get the indent object
  *
@@ -126,7 +92,9 @@ void increase_indent(void);
  *
  */
 void decrease_indent(void);
-
+#ifdef __cplusplus
+}
+#endif // __cplusplus
 #ifdef SINGLE_THREAD_DEBUG_MODE_ON
 
 #define GET_INDENT()          get_indent()
@@ -201,4 +169,3 @@ void decrease_indent(void);
     #endif
 
     void matan_wait(void);
-#endif /* __TRACE_H__ */
