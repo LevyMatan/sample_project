@@ -46,5 +46,7 @@ public:
     static int count_open_doors_brute_force(int N);
 
     static int count_open_doors(int N);
+    static int count_open_doors_best(int N);
+
 
 };

@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include <limits.h>
+#include <math.h>
 #include "debug.h"
 
 GeeksForGeeksPOTD::GeeksForGeeksPOTD(/* args */)
@@ -207,7 +208,7 @@ int GeeksForGeeksPOTD::count_open_doors(int N)
 {
     /**
      * @brief Let us look at an example of itertaitng
-     *  O == Door is open, X == Door is close
+     *  Map: O - Door is open, X - Door is close
      *  Step     1   2   3   4   5   6   7   8
      *
      *  1        O   O   O   O   O   O   O   O
@@ -226,12 +227,53 @@ int GeeksForGeeksPOTD::count_open_doors(int N)
      * Door 5: is visited twice [1, 5] ==> will remain closed.
      * Door 6: is visited four times [1, 2, 3, 6] ==> remains closed.
      *
-     * I need to understand which doors will be visited Odd or even times.
+     * Understand which doors will be visited Odd or Even times.
      * All doors that are visited Odd number of times will be open at the end.
      * It is essentianlly boils to the question, how many factors a number have.
      * Each number has at least two: 1 and itself.
+     * Which numbers have an Odd number of factors?
+     * Lets take a look at a random number X
+     * let us try and define its factors
+     * X = 1 * X
+     * X = a * b
+     * we know that a,b < X.
+     * Hence if a != b, for each number X the factors comes in pairs
+     * that is, an Even number of factors.
+     * In the case where X = a * a, X had an Odd number of factors.
      *
+     * Ok! now we have a plan.
+     * To answer the question we can solve a different one,
+     * How many numbers in the range of [1, N] have a sqaure root in the natural numbers field
+     * 1 = 1 * 1
+     * 4 = 2 * 2
+     * 9 = 3 * 3
+     * 16 = 4 * 4
+     * 25 = 5 * 5
+     * 36 = 6 * 6
      *
      *
      */
+
+    int res = 0;
+    int i = 1;
+    while(i*i <= N)
+    {
+        res++;
+        i++;
+    }
+
+    return res;
+
+}
+
+int GeeksForGeeksPOTD::count_open_doors_best(int N)
+{
+    /**
+     * @brief Continuing the logic of count_open_doors
+     * the count is actuall floor(sqrt(N))
+     *
+     */
+
+    return floor(sqrt(N));
+
 }
