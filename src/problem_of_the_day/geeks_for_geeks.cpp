@@ -9,7 +9,7 @@
  *
  */
 #include "geeks_for_geeks.hpp"
-#include <iostream>
+#include <algorithm>
 #include <vector>
 #include <limits.h>
 #include <math.h>
