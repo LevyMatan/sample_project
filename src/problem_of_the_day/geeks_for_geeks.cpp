@@ -226,6 +226,12 @@ int GeeksForGeeksPOTD::count_open_doors(int N)
      * Door 5: is visited twice [1, 5] ==> will remain closed.
      * Door 6: is visited four times [1, 2, 3, 6] ==> remains closed.
      *
+     * I need to understand which doors will be visited Odd or even times.
+     * All doors that are visited Odd number of times will be open at the end.
+     * It is essentianlly boils to the question, how many factors a number have.
+     * Each number has at least two: 1 and itself.
+     *
+     *
      *
      */
 }
