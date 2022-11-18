@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <vector>
 #include <limits.h>
+#include "reverse_spiral.hpp"
 #include <math.h>
 #include "debug.h"
 
@@ -275,5 +276,138 @@ int GeeksForGeeksPOTD::count_open_doors_best(int N)
      */
 
     return floor(sqrt(N));
+}
 
+
+std::vector<int> GeeksForGeeksPOTD::reverseSpiral(int R, int C, std::vector<std::vector<int>>&a)
+{
+    std::vector<int> reverse_spiral(R*C);
+    std::vector<std::vector<bool>> not_visited(R, std::vector<bool>(C,true));
+    int num_of_rows = C;
+    int num_of_cols = R;
+    int row_idx = 0;
+    int col_idx = 0;
+    ReverseSpiral::direction_e e_direction = ReverseSpiral::direction_e::RIGHT_E;
+
+    DEBUG_PRINT("Staring with a matrix of size %d X %d which means:\n", R,C);
+    DEBUG_PRINT("The length of a colum is %d\n", num_of_rows);
+    DEBUG_PRINT("The length of a row is %d\n", num_of_cols);
+    for(int idx = 0; idx < R*C; idx++)
+    {
+        reverse_spiral[R*C-1-idx] = a[row_idx][col_idx];
+        not_visited[row_idx][col_idx] = false;
+
+        if(!ReverseSpiral::can_go_forward(e_direction, row_idx, num_of_cols, col_idx, num_of_rows, not_visited))
+        {
+            e_direction = ReverseSpiral::next_direction(e_direction);
+        }
+
+        ReverseSpiral::move_forward(e_direction, row_idx, col_idx);
+    }
+
+    return reverse_spiral;
+}
+
+bool ReverseSpiral::can_go_forward(ReverseSpiral::direction_e e_direction, int row_idx, int row_len, int col_idx, int col_len, std::vector<std::vector<bool>> &not_visited)
+{
+    bool can_go = false;
+    int next_row_idx = row_idx;
+    int next_col_idx = col_idx;
+    DEBUG_PRINT("can_go_forward? to directing=%d, row_idx=%d, row_len=%d, col_idx=%d, col_len=%d == ",e_direction, row_idx, row_len, col_idx, col_len);
+    switch(e_direction)
+    {
+        case ReverseSpiral::direction_e::RIGHT_E:
+            next_col_idx++;
+            if((next_col_idx < col_len) && (not_visited[next_row_idx][next_col_idx]))
+            {
+                can_go = true;
+            }
+            break;
+        case ReverseSpiral::direction_e::DOWN_E:
+            next_row_idx++;
+            if((next_row_idx < row_len) && (not_visited[next_row_idx][next_col_idx]))
+            {
+                can_go = true;
+            }
+            break;
+        case ReverseSpiral::direction_e::LEFT_E:
+            next_col_idx--;
+            if((next_col_idx >= 0) && (not_visited[next_row_idx][next_col_idx]))
+            {
+                can_go = true;
+            }
+            break;
+        case ReverseSpiral::direction_e::UP_E:
+            next_row_idx--;
+            if((next_row_idx >= 0) && (not_visited[next_row_idx][next_col_idx]))
+            {
+                can_go = true;
+            }
+            break;
+        default:
+            break;
+    }
+    if(can_go)
+    {
+        DEBUG_PRINT("YES\n");
+    }
+    else
+    {
+        DEBUG_PRINT("NO\n");
+    }
+
+    return can_go;
+}
+
+void ReverseSpiral::move_forward(ReverseSpiral::direction_e e_direction, int &row_idx, int &col_idx)
+{
+    switch(e_direction)
+    {
+        case ReverseSpiral::direction_e::RIGHT_E:
+            col_idx++;
+            break;
+        case ReverseSpiral::direction_e::DOWN_E:
+            row_idx++;
+            break;
+        case ReverseSpiral::direction_e::LEFT_E:
+            col_idx--;
+            break;
+        case ReverseSpiral::direction_e::UP_E:
+            row_idx--;
+            break;
+        default:
+            break;
+    }
+}
+
+ReverseSpiral::direction_e ReverseSpiral::next_direction(ReverseSpiral::direction_e e_direction)
+{
+    DEBUG_PRINT("Next direction: ");
+    ReverseSpiral::direction_e new_dir = ReverseSpiral::get_next_direction(e_direction);
+    switch(new_dir)
+    {
+        case ReverseSpiral::direction_e::RIGHT_E:
+            DEBUG_PRINT("RIGHT!\n");
+            break;
+        case ReverseSpiral::direction_e::DOWN_E:
+        DEBUG_PRINT("DOWN!\n");
+
+            break;
+        case ReverseSpiral::direction_e::LEFT_E:
+        DEBUG_PRINT("LEFT!\n");
+
+            break;
+        case ReverseSpiral::direction_e::UP_E:
+        DEBUG_PRINT("UP!\n");
+            break;
+        default:
+        break;
+
+    }
+    return new_dir;
+}
+
+ReverseSpiral::direction_e ReverseSpiral::get_next_direction(ReverseSpiral::direction_e e_direction)
+{
+    return (ReverseSpiral::direction_e)(((int)(e_direction) + 1) % 4);
 }

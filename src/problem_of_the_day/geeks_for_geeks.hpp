@@ -48,5 +48,5 @@ public:
     static int count_open_doors(int N);
     static int count_open_doors_best(int N);
 
-
+    static std::vector<int> reverseSpiral(int R, int C, std::vector<std::vector<int>>&a);
 };
