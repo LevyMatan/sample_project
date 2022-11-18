@@ -149,7 +149,7 @@ int GeeksForGeeksPOTD::count_open_doors_brute_force(int N)
     }
     // Initialize a corridor array to represent each door state.
     // we assume the initiale state of all doors is open
-    std::vector<bool> open_doors(n, true);
+    std::vector<bool> open_doors(n, false);
 
     // Debug print the doors index
     DEBUG_PRINT("%6s", "Step  ");
@@ -162,7 +162,7 @@ int GeeksForGeeksPOTD::count_open_doors_brute_force(int N)
     // Iterate of steps sizes print the doors index
     for (size_t step = 1; step <= n; step++)
     {
-        size_t door_idx = 0;
+        size_t door_idx = (step-1);
         while(door_idx < n)
         {
             // Toogle the door state: change close to open, and open to close
@@ -183,5 +183,49 @@ int GeeksForGeeksPOTD::count_open_doors_brute_force(int N)
         DEBUG_PRINT("\n");
     }
 
-    return 0;
+    return std::count(open_doors.begin(), open_doors.end(), true);
+}
+
+
+
+/**
+ * @brief Consider a long alley with a N number of doors on one side.
+ * All the doors are closed initially. You move to and forward in the alley
+ * changing the states of the doors as follows: you open a door that is
+ * already closed and you close a door that is already opened.
+ * You start at one end go on altering the state of the doors
+ * till you reach the other end and then you come back and start
+ * altering the states of the doors again.
+ * In the first go, you alter the states of doors numbered 1, 2, 3, , n.
+ * In the second go, you alter the states of doors numbered 2, 4, 6
+ * In the third go, you alter the states of doors numbered 3, 6, 9
+ * You continue this till the Nth go in which you alter the state of the door numbered N.
+ * You have to find the number of open doors at the end of the procedure.
+ *
+ */
+int GeeksForGeeksPOTD::count_open_doors(int N)
+{
+    /**
+     * @brief Let us look at an example of itertaitng
+     *  O == Door is open, X == Door is close
+     *  Step     1   2   3   4   5   6   7   8
+     *
+     *  1        O   O   O   O   O   O   O   O
+     *  2        O   X   O   X   O   X   O   X
+     *  3        O   X   X   X   O   O   O   X
+     *  4        O   X   X   O   O   O   O   O
+     *  5        O   X   X   O   X   O   O   O
+     *  6        O   X   X   O   X   X   O   O
+     *  7        O   X   X   O   X   X   X   O
+     *  8        O   X   X   O   X   X   X   X
+     * Lets think how many times we visit each door:
+     * Door 1 is visited a single time ==> will remain open.
+     * Door 2: is visited twice ==> will remain closed.
+     * Door 3: is visited twice ==> will remain closed.
+     * Door 4: is visited three times[1, 2, 4] ==> will remain open.
+     * Door 5: is visited twice [1, 5] ==> will remain closed.
+     * Door 6: is visited four times [1, 2, 3, 6] ==> remains closed.
+     *
+     *
+     */
 }
