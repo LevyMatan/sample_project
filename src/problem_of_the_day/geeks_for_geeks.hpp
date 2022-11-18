@@ -34,4 +34,14 @@ public:
      * @return long long
      */
     static long long count_subarrays(int arr[], int n, int k);
+
+    /**
+     * @brief Brute force implementation with debug prints to illustrae the state of doors
+     *        each iteration.
+     *        For info on the open doors question lookup on google.
+     *
+     * @param n - number of doors in the corridor
+     * @return int
+     */
+    static int count_open_doors_brute_force(int N);
 };

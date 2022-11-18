@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include <limits.h>
+#include "debug.h"
 
 GeeksForGeeksPOTD::GeeksForGeeksPOTD(/* args */)
 {
@@ -123,4 +124,64 @@ long long GeeksForGeeksPOTD::count_subarrays(int arr[], int n, int k)
     }
 
     return count_subarrays;
+}
+
+/**
+ * @brief Brute force implementation with debug prints to illustrae the state of doors
+ *        each iteration.
+ *        For info on the open doors question lookup on google.
+ *        It is advised to use low values on n when in DEBUG mode since prints are added.
+ *
+ * @param n - number of doors in the corridor
+ * @return int
+ */
+int GeeksForGeeksPOTD::count_open_doors_brute_force(int N)
+{
+
+    size_t n;
+    if(N < 0)
+    {
+        return 0;
+    }
+    else
+    {
+        n = (size_t)N;
+    }
+    // Initialize a corridor array to represent each door state.
+    // we assume the initiale state of all doors is open
+    std::vector<bool> open_doors(n, true);
+
+    // Debug print the doors index
+    DEBUG_PRINT("%6s", "Step  ");
+    for (size_t i = 0; i < n; i++)
+    {
+        DEBUG_PRINT("%4lu", (i+1));
+    }
+    DEBUG_PRINT("\n\n");
+
+    // Iterate of steps sizes print the doors index
+    for (size_t step = 1; step <= n; step++)
+    {
+        size_t door_idx = 0;
+        while(door_idx < n)
+        {
+            // Toogle the door state: change close to open, and open to close
+            open_doors[door_idx] = not open_doors[door_idx];
+
+            // Go to next door at `step` distance
+            door_idx += step;
+
+        }
+
+        // Debug Print
+        DEBUG_PRINT("%-6lu", step);
+        for (size_t i = 0; i < n; i++)
+        {
+            const char door_state = (open_doors[i]) ? ('O') : ('X');
+            DEBUG_PRINT("%4c", door_state);
+        }
+        DEBUG_PRINT("\n");
+    }
+
+    return 0;
 }

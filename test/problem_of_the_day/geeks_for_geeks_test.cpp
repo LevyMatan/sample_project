@@ -20,3 +20,12 @@ TEST( ProblemOfTheDay, count_subarrays_test_len_2)
     ASSERT_EQ(num_of_subarrays_greater_than_k, 0);
 
 }
+
+
+TEST( ProblemOfTheDay, count_open_doors_brute_force_8)
+{
+
+    int num_of_open_doors = GeeksForGeeksPOTD::count_open_doors_brute_force(8);
+    ASSERT_EQ(num_of_open_doors, 0);
+
+}
