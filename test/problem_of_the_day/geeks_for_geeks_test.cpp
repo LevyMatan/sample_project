@@ -45,6 +45,18 @@ TEST( ProblemOfTheDay, count_open_doors_against_brute_force)
         int num_of_open_doors = GeeksForGeeksPOTD::count_open_doors(N);
         ASSERT_EQ(num_of_open_doors, num_of_open_doors_brute_force);
     }
+}
+TEST( ProblemOfTheDay, count_open_doors_against_best)
+{
 
-
+    #define MAX_N_DOORS_BEST (100000)
+    size_t num_of_test_cases = 200;
+    for (size_t i = 0; i < num_of_test_cases; i++)
+    {
+        int N = random() % MAX_N_DOORS_BEST;
+        DEBUG_PRINT("Testing for N = %d:\n", N);
+        int num_of_open_doors_best = GeeksForGeeksPOTD::count_open_doors_best(N);
+        int num_of_open_doors = GeeksForGeeksPOTD::count_open_doors(N);
+        ASSERT_EQ(num_of_open_doors, num_of_open_doors_best);
+    }
 }
